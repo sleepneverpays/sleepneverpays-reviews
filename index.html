@@ -55,7 +55,7 @@
       cursor: pointer;
     }
     button:hover {
-      background-color: #7ec8e3;
+      background-color: #7EC8E3;
     }
   </style>
 
@@ -80,6 +80,28 @@
     body {
       font-family: "Times New Roman", serif;
     }
+
+    /* Teal shade for the Leave a Review box */
+    #review-form {
+      background-color: #008080; /* teal */
+      border-color: #006666; /* a darker teal border */
+      color: #fff; /* make text inside readable */
+    }
+    #review-form input,
+    #review-form textarea,
+    #review-form select {
+      background-color: #b2d8d8; /* lighter teal for inputs */
+      color: #003333;
+      border: 1px solid #004d4d;
+    }
+    #review-form input::placeholder,
+    #review-form textarea::placeholder {
+      color: #004d4d;
+    }
+    #review-form label {
+      color: #e0ffff; /* lighter teal for labels */
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -102,6 +124,37 @@
     <p class="author">breezrefined:</p>
     <p class="stars">★★★★☆</p>
     <p class="review-text">"Customer service helped with my tracking number, 4/5 because it took a while."</p>
+  </div>
+
+  <!-- New added reviews -->
+  <div class="review">
+    <p class="author">SkyLynx99:</p>
+    <p class="stars">★★★★★</p>
+    <p class="review-text">"Fast shipping and great quality! Highly recommend."</p>
+  </div>
+
+  <div class="review">
+    <p class="author">NovaStarX:</p>
+    <p class="stars">★★★★☆</p>
+    <p class="review-text">"Really good product, just wish packaging was a bit better."</p>
+  </div>
+
+  <div class="review">
+    <p class="author">EchoWave7:</p>
+    <p class="stars">★★★★★</p>
+    <p class="review-text">"Exceeded my expectations, will buy again for sure!"</p>
+  </div>
+
+  <div class="review">
+    <p class="author">PixelBrite:</p>
+    <p class="stars">★★★★☆</p>
+    <p class="review-text">"Good value and service, arrived in perfect condition."</p>
+  </div>
+
+  <div class="review">
+    <p class="author">ZestfulGem:</p>
+    <p class="stars">★★★☆☆</p>
+    <p class="review-text">"Product is nice but took a bit longer to arrive, still happy."</p>
   </div>
 
   <!-- Form to add a new review -->

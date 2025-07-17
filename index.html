@@ -22,26 +22,102 @@
       font-weight: bold;
       color: #6cf;
     }
+    .stars {
+      color: gold;
+    }
+    form {
+      margin-top: 30px;
+      padding: 15px;
+      background: #222;
+      border: 1px solid #333;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      background: #333;
+      color: #eee;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      background: #f54242;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #c53131;
+    }
   </style>
 </head>
 <body>
   <h1>Reviews for SleepNeverPays</h1>
-  
-  <div class="review">
-    <p class="author">User123:</p>
-    <p>"Avoid at all costs. Never delivered what was promised."</p>
-  </div>
-  
-  <div class="review">
-    <p class="author">AnotherReviewer:</p>
-    <p>"Seems suspicious. Communication stopped after payment."</p>
+
+  <div id="reviews-container">
+    <!-- Reviews will appear here -->
   </div>
 
-  <div class="review">
-    <p class="author">VerifiedCustomer:</p>
-    <p>"Scam behavior. Do not engage."</p>
-  </div>
+  <form id="review-form">
+    <h2>Submit Your Review</h2>
+    <label for="username">Your Name:</label>
+    <input type="text" id="username" required>
 
-  <!-- Add more reviews below -->
+    <label for="stars">Star Rating:</label>
+    <select id="stars" required>
+      <option value="">Select Rating</option>
+      <option value="1">★☆☆☆☆</option>
+      <option value="2">★★☆☆☆</option>
+      <option value="3">★★★☆☆</option>
+      <option value="4">★★★★☆</option>
+      <option value="5">★★★★★</option>
+    </select>
+
+    <label for="review-text">Your Review:</label>
+    <textarea id="review-text" rows="4" required></textarea>
+
+    <button type="submit">Submit Review</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('review-form');
+    const container = document.getElementById('reviews-container');
+
+    // Load reviews from localStorage
+    const savedReviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+
+    function renderReview(name, stars, text) {
+      const div = document.createElement('div');
+      div.classList.add('review');
+      div.innerHTML = `
+        <p class="author">${name}:</p>
+        <p class="stars">${'★'.repeat(stars)}${'☆'.repeat(5 - stars)}</p>
+        <p>${text}</p>
+      `;
+      container.prepend(div);
+    }
+
+    savedReviews.forEach(r => renderReview(r.name, r.stars, r.text));
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('username').value.trim();
+      const stars = parseInt(document.getElementById('stars').value);
+      const text = document.getElementById('review-text').value.trim();
+
+      if (!name || !text || isNaN(stars)) return;
+
+      const review = { name, stars, text };
+      savedReviews.push(review);
+      localStorage.setItem('reviews', JSON.stringify(savedReviews));
+
+      renderReview(name, stars, text);
+      form.reset();
+    });
+  </script>
 </body>
 </html>

@@ -5,21 +5,23 @@
   <title>Reviews</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Times New Roman", serif;
       background: #fafad2;
       color: #100C08;
       margin: 0;
       padding: 20px;
+      max-width: 600px;
+      /* keep content on left side with some margin */
     }
     h1 {
-      color: #add8e6;
+      color: #6495ED; /* Slightly darker light blue */
     }
     .review {
       padding: 15px;
       margin-bottom: 10px;
-      background-color: #fff;
-      border-radius: 50px;  /* Oval shape */
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Light shadow for better visibility */
+      background-color: #faebd7; /* AntiqueWhite */
+      border-radius: 50px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     .author {
       font-weight: bold;
@@ -35,78 +37,46 @@
     }
     #review-form {
       margin-top: 30px;
-      background: #eee8aa;
-      padding: 15px;
-      border: 1px solid #aaa;
-    }
-    input, textarea, select {
-      width: 100%;
-      padding: 8px;
-      margin: 5px 0 10px;
-      background: #fff;
-      color: #100C08;
-      border: 1px solid #ccc;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #add8e6;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #7EC8E3;
-    }
-  </style>
-
-  <!-- Override styles below -->
-  <style>
-    /* Darker light blue for the top h1 */
-    h1 {
-      color: #6495ED; /* Slightly darker light blue */
-    }
-
-    /* Oval shape for the review button */
-    button {
-      border-radius: 50px;
-      background-color: #f8f8f2; /* off-white */
-      color: #100C08;
-    }
-    button:hover {
-      background-color: #e6e6d9; /* slightly darker off-white on hover */
-      color: #100C08;
-    }
-
-    /* Off-white background for review boxes */
-    .review {
-      background-color: #f8f8f2; /* off-white */
-    }
-
-    /* Change font to Times New Roman for the whole page */
-    body {
-      font-family: "Times New Roman", serif;
-    }
-
-    /* Teal shade for the Leave a Review box */
-    #review-form {
       background-color: #008080; /* teal */
-      border-color: #006666; /* a darker teal border */
-      color: #fff; /* make text inside readable */
+      border: 1px solid #006666;
+      padding: 15px;
+      color: #fff;
+      border-radius: 10px;
     }
     #review-form input,
     #review-form textarea,
     #review-form select {
-      background-color: #b2d8d8; /* lighter teal for inputs */
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0 10px;
+      background-color: #b2d8d8;
       color: #003333;
       border: 1px solid #004d4d;
+      border-radius: 5px;
+      font-family: "Times New Roman", serif;
     }
     #review-form input::placeholder,
     #review-form textarea::placeholder {
       color: #004d4d;
     }
     #review-form label {
-      color: #e0ffff; /* lighter teal for labels */
+      color: #e0ffff;
       font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #f8f8f2; /* off-white */
+      color: #100C08;
+      border: none;
+      cursor: pointer;
+      border-radius: 50px;
+      font-family: "Times New Roman", serif;
+    }
+    button:hover {
+      background-color: #e6e6d9;
+      color: #100C08;
     }
   </style>
 </head>
@@ -132,7 +102,6 @@
     <p class="review-text">"Customer service helped with my tracking number, 4/5 because it took a while."</p>
   </div>
 
-  <!-- New added reviews -->
   <div class="review">
     <p class="author">SkyLynx99:</p>
     <p class="stars">★★★★★</p>

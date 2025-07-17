@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Reviews</title>
   <style>
     body {
@@ -58,11 +58,33 @@
       background-color: #7EC8E3;
     }
   </style>
+
+  <!-- Override styles below -->
+  <style>
+    /* Darker light blue for the top h1 */
+    h1 {
+      color: #6495ED; /* Slightly darker light blue */
+    }
+
+    /* Oval shape for the review button */
+    button {
+      border-radius: 50px;
+    }
+
+    /* Light gray background for review boxes */
+    .review {
+      background-color: #d3d3d3; /* lightgray */
+    }
+
+    /* Change font to Times New Roman for the whole page */
+    body {
+      font-family: "Times New Roman", serif;
+    }
+  </style>
 </head>
 <body>
   <h1>sleepneverpays Reviews 
-    <br>*PLEASE NOTE YOUR REVIEW WILL NOT BE PUBLIC UNTIL YOU'RE A VERIFIED CUSTOMER.*
-  </h1>
+    <br>*PLEASE NOTE YOUR REVIEW WILL NOT BE PUBLIC UNTIL YOU'RE A VERIFIED CUSTOMER.*</h1>
 
   <div class="review">
     <p class="author">hittemup:</p>
@@ -85,7 +107,7 @@
   <!-- Form to add a new review -->
   <div id="review-form">
     <h2>Leave a Review</h2>
-    <input type="text" id="name" placeholder="Your name" required>
+    <input type="text" id="name" placeholder="Your name" required />
     
     <label for="stars">Star Rating:</label>
     <select id="stars" required>

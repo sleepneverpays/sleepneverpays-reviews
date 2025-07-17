@@ -11,9 +11,10 @@
       margin: 0;
       padding: 20px;
       max-width: 600px;
+      /* keep content on left side with some margin */
     }
     h1 {
-      color: #6495ED; /* Slightly darker light blue */
+      color: #6495ed; /* Slightly darker light blue */
     }
     .review {
       padding: 15px;
@@ -45,7 +46,7 @@
     #review-form input,
     #review-form textarea,
     #review-form select {
-      width: 50%; /* changed from 100% to 50% */
+      width: 100%;
       padding: 8px;
       margin: 5px 0 10px;
       background-color: #b2d8d8;
@@ -53,11 +54,6 @@
       border: 1px solid #004d4d;
       border-radius: 5px;
       font-family: "Times New Roman", serif;
-      box-sizing: border-box;
-    }
-    #review-form textarea {
-      /* Keep textarea height but width 50% */
-      resize: vertical;
     }
     #review-form input::placeholder,
     #review-form textarea::placeholder {
@@ -119,7 +115,7 @@
   </div>
 
   <div class="review">
-    <p class="author">EchoWave7:</p>
+    <p class="author">Piter Markilaf:</p>
     <p class="stars">★★★★★</p>
     <p class="review-text">"Exceeded my expectations, will buy again for sure!"</p>
   </div>

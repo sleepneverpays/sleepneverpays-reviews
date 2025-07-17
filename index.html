@@ -50,8 +50,10 @@
     #review-form textarea,
     #review-form select {
       width: 50%; /* half width */
+      margin-left: 0; /* align left */
       padding: 8px;
-      margin: 5px 0 10px 0;
+      margin-top: 5px;
+      margin-bottom: 10px;
       background-color: #b2d8d8;
       color: #003333;
       border: 1px solid #004d4d;
@@ -142,6 +144,9 @@
     <p class="review-text">"Product is nice but took a bit longer to arrive, still happy."</p>
   </div>
 
+  <!-- New reviews inserted here, ABOVE the review form -->
+  <div id="new-reviews"></div>
+
   <!-- Form to add a new review -->
   <div id="review-form">
     <h2>Leave a Review</h2>
@@ -160,8 +165,6 @@
     <textarea id="text" rows="4" placeholder="Your review..." required></textarea>
     <button onclick="addReview()">Submit Review</button>
   </div>
-
-  <div id="new-reviews"></div>
 
   <script>
     function addReview() {

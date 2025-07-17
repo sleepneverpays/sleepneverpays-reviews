@@ -6,13 +6,13 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #111;
-      color: #fffafa;
+      background: #FAFAD2;
+      color: #100C08;
       margin: 0;
       padding: 20px;
     }
     h1 {
-      color: #ffd700;
+      color: #FFD700;
     }
     .review {
       border-bottom: 1px solid #444;
@@ -20,21 +20,29 @@
     }
     .author {
       font-weight: bold;
-      color: #fa8072;
+      color: #100C08;
+    }
+    .review-text {
+      color: #100C08;
+    }
+    .stars {
+      color: gold;
+      font-size: 18px;
+      margin-bottom: 5px;
     }
     #review-form {
       margin-top: 30px;
-      background: #222;
+      background: #eee8aa;
       padding: 15px;
-      border: 1px solid #333;
+      border: 1px solid #aaa;
     }
-    input, textarea {
+    input, textarea, select {
       width: 100%;
       padding: 8px;
       margin: 5px 0 10px;
-      background: #333;
-      color: #ffe4cd;
-      border: none;
+      background: #fff;
+      color: #100C08;
+      border: 1px solid #ccc;
     }
     button {
       padding: 10px 20px;
@@ -50,27 +58,39 @@
 </head>
 <body>
   <h1>sleepneverpays Reviews 
-    *PLEASE NOTE YOUR REVIEW WILL NOT BE PUBLIC UNTIL YOU'RE A VERIFIED CUSTOMER.*</h1>
+    <br>*PLEASE NOTE YOUR REVIEW WILL NOT BE PUBLIC UNTIL YOU'RE A VERIFIED CUSTOMER.*
+  </h1>
 
   <div class="review">
     <p class="author">hittemup:</p>
-    <p>"Saw on tik tok, took a little longer than expected but cheap and what i ordered."</p>
+    <p class="review-text">"Saw on tik tok, took a little longer than expected but cheap and what I ordered."</p>
   </div>
   
   <div class="review">
     <p class="author">OpalMagic8itch:</p>
-    <p>"i didnt have a paypal so they directed me to depop and it came faster"</p>
+    <p class="review-text">"I didn't have a PayPal so they directed me to Depop and it came faster."</p>
   </div>
 
   <div class="review">
     <p class="author">breezrefined:</p>
-    <p>"customer service helped with my tracking number, 4/5 because it took a while."</p>
+    <p class="review-text">"Customer service helped with my tracking number, 4/5 because it took a while."</p>
   </div>
 
   <!-- Form to add a new review -->
   <div id="review-form">
     <h2>Leave a Review</h2>
     <input type="text" id="name" placeholder="Your name" required>
+    
+    <label for="stars">Star Rating:</label>
+    <select id="stars" required>
+      <option value="">Select rating</option>
+      <option value="1">★☆☆☆☆</option>
+      <option value="2">★★☆☆☆</option>
+      <option value="3">★★★☆☆</option>
+      <option value="4">★★★★☆</option>
+      <option value="5">★★★★★</option>
+    </select>
+
     <textarea id="text" rows="4" placeholder="Your review..." required></textarea>
     <button onclick="addReview()">Submit Review</button>
   </div>
@@ -81,17 +101,23 @@
     function addReview() {
       const name = document.getElementById('name').value.trim();
       const text = document.getElementById('text').value.trim();
+      const stars = parseInt(document.getElementById('stars').value);
 
-      if (name === '' || text === '') return;
+      if (name === '' || text === '' || isNaN(stars)) return;
 
       const reviewDiv = document.createElement('div');
       reviewDiv.className = 'review';
-      reviewDiv.innerHTML = `<p class="author">${name}:</p><p>${text}</p>`;
+      reviewDiv.innerHTML = `
+        <p class="author">${name}:</p>
+        <p class="stars">${'★'.repeat(stars)}${'☆'.repeat(5 - stars)}</p>
+        <p class="review-text">${text}</p>
+      `;
 
       document.getElementById('new-reviews').prepend(reviewDiv);
 
       document.getElementById('name').value = '';
       document.getElementById('text').value = '';
+      document.getElementById('stars').value = '';
     }
   </script>
 </body>

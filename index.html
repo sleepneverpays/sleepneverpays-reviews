@@ -22,102 +22,76 @@
       font-weight: bold;
       color: #6cf;
     }
-    .stars {
-      color: gold;
-    }
-    form {
+    #review-form {
       margin-top: 30px;
-      padding: 15px;
       background: #222;
+      padding: 15px;
       border: 1px solid #333;
     }
-    label {
-      display: block;
-      margin: 10px 0 5px;
-    }
-    input, textarea, select {
+    input, textarea {
       width: 100%;
       padding: 8px;
-      border: none;
+      margin: 5px 0 10px;
       background: #333;
       color: #eee;
+      border: none;
     }
     button {
-      margin-top: 10px;
-      padding: 10px;
-      background: #f54242;
+      padding: 10px 20px;
+      background-color: #f54242;
       color: #fff;
       border: none;
       cursor: pointer;
     }
     button:hover {
-      background: #c53131;
+      background-color: #c53131;
     }
   </style>
 </head>
 <body>
   <h1>Reviews for SleepNeverPays</h1>
 
-  <div id="reviews-container">
-    <!-- Reviews will appear here -->
+  <div class="review">
+    <p class="author">User123:</p>
+    <p>"Avoid at all costs. Never delivered what was promised."</p>
+  </div>
+  
+  <div class="review">
+    <p class="author">AnotherReviewer:</p>
+    <p>"Seems suspicious. Communication stopped after payment."</p>
   </div>
 
-  <form id="review-form">
-    <h2>Submit Your Review</h2>
-    <label for="username">Your Name:</label>
-    <input type="text" id="username" required>
+  <div class="review">
+    <p class="author">VerifiedCustomer:</p>
+    <p>"Scam behavior. Do not engage."</p>
+  </div>
 
-    <label for="stars">Star Rating:</label>
-    <select id="stars" required>
-      <option value="">Select Rating</option>
-      <option value="1">★☆☆☆☆</option>
-      <option value="2">★★☆☆☆</option>
-      <option value="3">★★★☆☆</option>
-      <option value="4">★★★★☆</option>
-      <option value="5">★★★★★</option>
-    </select>
+  <!-- Form to add a new review -->
+  <div id="review-form">
+    <h2>Leave a Review</h2>
+    <input type="text" id="name" placeholder="Your name" required>
+    <textarea id="text" rows="4" placeholder="Your review..." required></textarea>
+    <button onclick="addReview()">Submit Review</button>
+  </div>
 
-    <label for="review-text">Your Review:</label>
-    <textarea id="review-text" rows="4" required></textarea>
-
-    <button type="submit">Submit Review</button>
-  </form>
+  <div id="new-reviews"></div>
 
   <script>
-    const form = document.getElementById('review-form');
-    const container = document.getElementById('reviews-container');
+    function addReview() {
+      const name = document.getElementById('name').value.trim();
+      const text = document.getElementById('text').value.trim();
 
-    // Load reviews from localStorage
-    const savedReviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+      if (name === '' || text === '') return;
 
-    function renderReview(name, stars, text) {
-      const div = document.createElement('div');
-      div.classList.add('review');
-      div.innerHTML = `
-        <p class="author">${name}:</p>
-        <p class="stars">${'★'.repeat(stars)}${'☆'.repeat(5 - stars)}</p>
-        <p>${text}</p>
-      `;
-      container.prepend(div);
+      const reviewDiv = document.createElement('div');
+      reviewDiv.className = 'review';
+      reviewDiv.innerHTML = `<p class="author">${name}:</p><p>${text}</p>`;
+
+      document.getElementById('new-reviews').prepend(reviewDiv);
+
+      document.getElementById('name').value = '';
+      document.getElementById('text').value = '';
     }
-
-    savedReviews.forEach(r => renderReview(r.name, r.stars, r.text));
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const name = document.getElementById('username').value.trim();
-      const stars = parseInt(document.getElementById('stars').value);
-      const text = document.getElementById('review-text').value.trim();
-
-      if (!name || !text || isNaN(stars)) return;
-
-      const review = { name, stars, text };
-      savedReviews.push(review);
-      localStorage.setItem('reviews', JSON.stringify(savedReviews));
-
-      renderReview(name, stars, text);
-      form.reset();
-    });
   </script>
 </body>
 </html>
